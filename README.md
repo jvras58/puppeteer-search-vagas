@@ -15,8 +15,8 @@ Este projeto é um bot que pesquisa vagas de emprego no LinkedIn com as palavras
 1. Clone o repositório:
 
     ```bash
-    git clone https://github.com/seu-usuario/linkedin-job-search-bot.git
-    cd linkedin-job-search-bot
+    git clone https://github.com/jvras58/puppeteer-search-vagas.git
+    cd puppeteer-search-vagas
     ```
 
 2. Instale as dependências:
