@@ -15,7 +15,7 @@ async function searchLinkedIn() {
     await page.waitForNavigation();
     
     // Realizar a pesquisa
-    const searchQuery = '"Estágio" AND "Python" AND "Remoto"';
+    const searchQuery = process.env.SEARCHQUERY;
     await page.goto(`https://www.linkedin.com/jobs/search/?keywords=${encodeURIComponent(searchQuery)}`);
     
     await page.waitForSelector('.jobs-search-results__list-item');
