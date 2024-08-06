@@ -35,12 +35,12 @@ async function searchLinkedIn() {
         }
 
         // Realizar a pesquisa
-        const searchQuery = process.env.SEARCHQUERY;
-        await page.goto(`https://www.linkedin.com/jobs/search/?keywords=${encodeURIComponent(searchQuery)}`);
+        const searchQuery = process.env.searchQuery;
+        console.log(`Pesquisando por: ${searchQuery}`);
+        const searchUrl = `https://www.linkedin.com/jobs/search/?keywords=${encodeURIComponent(searchQuery)}`;
+        console.log(`Acessando URL: ${searchUrl}`);
+        await page.goto(searchUrl);
         await page.waitForSelector('.jobs-search-results__list-item', { timeout: 10000 });
-
-        // Atraso aleatório para emular comportamento humano
-        await page.waitForTimeout(Math.random() * 2000 + 1000);
 
         const results = await page.evaluate(() => {
             const jobElements = document.querySelectorAll('.jobs-search-results__list-item');
