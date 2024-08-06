@@ -24,6 +24,8 @@ app.get('/pesquisar', async (req, res) => {
     console.log('Rodando a pesquisa no LinkedIn');
     try {
         const results = await searchLinkedIn({
+            // TODO: 1. esses valores devem ser passados pelo bot do discord
+            // TODO: 2. quando for filtro do tipo publicações, a url deve ser diferente da que está sendo usada por padrão 
             // TODO: EU PRECISO FAZER COM QUE QUANDO FOR ADICINADO ALGO DO TIPO FILTRO_PUBLICAÇÕES E PASSADO ESSES PARAMETROS PARA ELE PELO DISCORD ELE USE OUTRA URL NÃO A https://www.linkedin.com/jobs/search/?keywords=%22Junior%22+AND+%22Python%22+AND+%22Remoto%22&sortBy=date_posted&datePosted=past-week E SIM https://www.linkedin.com/search/results/content/?keywords=Junior%20Python%20Remoto&origin=SWITCH_SEARCH_VERTICAL&sid=na* E CASO NÃO PASSE NENHUM PARAMETRO ELE SÓ EXECUTE https://www.linkedin.com/jobs/search/? COMO JÁ ESTA FAZENDO...
             keywords: '"Junior" AND "Python" AND "Remoto"',
             sortBy: 'date_posted', // Pode ser 'relevance' ou 'date_posted'
