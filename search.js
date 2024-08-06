@@ -35,7 +35,7 @@ async function searchLinkedIn() {
         }
 
         // Realizar a pesquisa
-        const searchQuery = process.env.searchQuery;
+        const searchQuery = process.env.SEARCHQUERY;
         console.log(`Pesquisando por: ${searchQuery}`);
         const searchUrl = `https://www.linkedin.com/jobs/search/?keywords=${encodeURIComponent(searchQuery)}`;
         console.log(`Acessando URL: ${searchUrl}`);

@@ -5,10 +5,16 @@ const sendDiscordMessage = require('./discordBot');
 require('dotenv').config();
 
 const app = express();
-const port = 3005;
+const port = process.env.PORT || 3005;
+
+// Middleware para logging
+app.use((req, res, next) => {
+    console.log(`${req.method} ${req.url}`);
+    next();
+});
 
 // ID do canal do Discord onde as mensagens serão enviadas
-const DISCORD_CHANNEL_ID = process.env.DISCORD_CHANNEL_ID
+const DISCORD_CHANNEL_ID = process.env.DISCORD_CHANNEL_ID;
 
 app.get('/', (req, res) => {
     res.send('O bot de pesquisa do LinkedIn está em execução');
