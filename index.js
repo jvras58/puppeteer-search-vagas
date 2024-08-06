@@ -23,7 +23,12 @@ app.get('/', (req, res) => {
 app.get('/pesquisar', async (req, res) => {
     console.log('Rodando a pesquisa no LinkedIn');
     try {
-        const results = await searchLinkedIn();
+        const results = await searchLinkedIn({
+            // TODO: EU PRECISO FAZER COM QUE QUANDO FOR ADICINADO ALGO DO TIPO FILTRO_PUBLICAÇÕES E PASSADO ESSES PARAMETROS PARA ELE PELO DISCORD ELE USE OUTRA URL NÃO A https://www.linkedin.com/jobs/search/?keywords=%22Junior%22+AND+%22Python%22+AND+%22Remoto%22&sortBy=date_posted&datePosted=past-week E SIM https://www.linkedin.com/search/results/content/?keywords=Junior%20Python%20Remoto&origin=SWITCH_SEARCH_VERTICAL&sid=na* E CASO NÃO PASSE NENHUM PARAMETRO ELE SÓ EXECUTE https://www.linkedin.com/jobs/search/? COMO JÁ ESTA FAZENDO...
+            keywords: '"Junior" AND "Python" AND "Remoto"',
+            sortBy: 'date_posted', // Pode ser 'relevance' ou 'date_posted'
+            datePosted: 'past-week' // Pode ser 'past-24h', 'past-week', ou 'past-month'
+        });
         if (results.length > 0) {
             const message = results.map(r => `${r.title} at ${r.company} in ${r.location}`).join('\n');
             await sendDiscordMessage(DISCORD_CHANNEL_ID, `Aqui estão os resultados do trabalho:\n\n${message}`);
