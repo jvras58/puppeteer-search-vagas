@@ -5,7 +5,7 @@ const sendDiscordMessage = require('./discordBot');
 require('dotenv').config();
 
 const app = express();
-const port = 3000;
+const port = 3005;
 
 // ID do canal do Discord onde as mensagens serão enviadas
 const DISCORD_CHANNEL_ID = process.env.DISCORD_CHANNEL_ID
